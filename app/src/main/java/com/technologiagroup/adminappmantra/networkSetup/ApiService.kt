@@ -14,7 +14,7 @@ interface ApiService {
     @GET("/api/user/get-pageable-user")
     suspend fun getAllUser(@Query("pageNo") pno:String,@Query("noOfitemPerPage") noOfitemPerPage:String) : UserResponse
     @POST("api/user/admin/create-user")
-    fun createUser(@Body requestModel: User):UserResponseForCreateUser
+    suspend fun createUser(@Body requestModel: User):UserResponseForCreateUser
 
     @GET("/api/user/star/admin/get-all-stars")
     suspend fun getAllStars() : StarResponse

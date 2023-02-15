@@ -132,9 +132,9 @@ class CreateUser : AppCompatActivity() {
                 val formattedDate: String = df.format(c)
                 val newUser = User(null, name, phone, dob, tob, pob,formattedDate,payAmtStat,pAmt,formattedDate,starId,"Logged in")
                 Logger.log("newuSer",newUser.toString())
-//                lifecycleScope.launch {
-//                    userViewModel.createUser(newUser)
-//                }
+                lifecycleScope.launch {
+                    userViewModel.createUser(newUser)
+                }
 
             }
             else
