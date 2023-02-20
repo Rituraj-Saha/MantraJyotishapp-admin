@@ -170,7 +170,7 @@ class CreateUser : AppCompatActivity() {
                         finish()
                     }
                     else{
-                        Toast.makeText(this,"Error occured", Toast.LENGTH_LONG)
+                        Toast.makeText(this,"Error occured", Toast.LENGTH_LONG).show()
                         Logger.log("userNetwork","Error occurerd")
                     }
                 }
