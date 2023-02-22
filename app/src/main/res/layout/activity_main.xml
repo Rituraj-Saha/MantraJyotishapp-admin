@@ -6,8 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
+   <LinearLayout
+       android:id="@+id/srchNumber"
+       android:layout_width="match_parent"
+       android:layout_height="50dp"
+       android:orientation="horizontal"
+       >
+
+   </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclEndless"
+        android:layout_below="@+id/srchNumber"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
     <ProgressBar
