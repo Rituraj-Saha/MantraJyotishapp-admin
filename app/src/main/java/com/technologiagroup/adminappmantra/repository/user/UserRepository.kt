@@ -1,5 +1,6 @@
 package com.technologiyagroup.matrajayotish.repositories.user
 
+import com.technologiagroup.adminappmantra.model.user.UserUpdate
 import com.technologiyagroup.matrajayotish.model.user.NetworkResult
 import com.technologiyagroup.matrajayotish.model.user.User
 import com.technologiyagroup.matrajayotish.networkSetup.ApiService
@@ -20,6 +21,14 @@ class UserRepository @Inject constructor(private val apiService: ApiService) {
     suspend fun createUser(user:User) = flow {
         emit(NetworkResult.Loading(true))
         val response = apiService.createUser(user)
+        emit(NetworkResult.Success(response))
+    }.catch { e ->
+        emit(NetworkResult.Failure(e.message ?: "Unknown Error"))
+    }
+
+    suspend fun updateUser(userUpdate:UserUpdate) = flow {
+        emit(NetworkResult.Loading(true))
+        val response = apiService.updateUser(userUpdate)
         emit(NetworkResult.Success(response))
     }.catch { e ->
         emit(NetworkResult.Failure(e.message ?: "Unknown Error"))

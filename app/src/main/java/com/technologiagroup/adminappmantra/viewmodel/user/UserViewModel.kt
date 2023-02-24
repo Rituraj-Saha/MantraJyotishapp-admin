@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.technologiagroup.adminappmantra.model.user.StarResponse
 import com.technologiagroup.adminappmantra.model.user.UserResponseForCreateUser
+import com.technologiagroup.adminappmantra.model.user.UserUpdate
+import com.technologiagroup.adminappmantra.model.user.UserUpdateResponse
 import com.technologiyagroup.matrajayotish.model.user.NetworkResult
 import com.technologiyagroup.matrajayotish.model.user.ResponseBody
 import com.technologiyagroup.matrajayotish.model.user.User
@@ -27,6 +29,9 @@ class UserViewModel  @Inject constructor(
     private var _userResponse2 = MutableLiveData<NetworkResult<UserResponseForCreateUser>>()
     val userResponse2: LiveData<NetworkResult<UserResponseForCreateUser>> = _userResponse2
 
+    private var _userUpdateResponse = MutableLiveData<NetworkResult<UserUpdateResponse>>()
+    val userUpdateResponse: LiveData<NetworkResult<UserUpdateResponse>> = _userUpdateResponse
+
     private var _starResponse = MutableLiveData<NetworkResult<StarResponse>>()
     val starResponse: LiveData<NetworkResult<StarResponse>> = _starResponse
 //    init {
@@ -44,6 +49,14 @@ class UserViewModel  @Inject constructor(
         viewModelScope.launch {
             userRepository.createUser(user).collect {
                 _userResponse2.postValue(it)
+            }
+        }
+    }
+
+    suspend fun updateUser(user:UserUpdate) {
+        viewModelScope.launch {
+            userRepository.updateUser(user).collect {
+                _userUpdateResponse.postValue(it)
             }
         }
     }

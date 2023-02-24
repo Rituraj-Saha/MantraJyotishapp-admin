@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity()  {
         val linearLayoutManager =  LinearLayoutManager(this)
         binding.recyclEndless.layoutManager = linearLayoutManager
         binding.recyclEndless.setHasFixedSize(true)
-        val adapter = RecyclerViewAdaptor(mList)
+        val adapter = RecyclerViewAdaptor(mList,this)
         binding.recyclEndless.adapter = adapter
         var isItemAllLoaded = false
 

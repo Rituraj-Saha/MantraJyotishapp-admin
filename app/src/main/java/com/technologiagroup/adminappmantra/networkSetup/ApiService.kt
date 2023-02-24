@@ -3,6 +3,8 @@ package com.technologiyagroup.matrajayotish.networkSetup
 
 import com.technologiagroup.adminappmantra.model.user.StarResponse
 import com.technologiagroup.adminappmantra.model.user.UserResponseForCreateUser
+import com.technologiagroup.adminappmantra.model.user.UserUpdate
+import com.technologiagroup.adminappmantra.model.user.UserUpdateResponse
 import com.technologiyagroup.matrajayotish.model.user.User
 import com.technologiyagroup.matrajayotish.model.user.UserResponse
 import retrofit2.http.Body
@@ -15,6 +17,9 @@ interface ApiService {
     suspend fun getAllUser(@Query("pageNo") pno:String,@Query("noOfitemPerPage") noOfitemPerPage:String) : UserResponse
     @POST("api/user/admin/create-user")
     suspend fun createUser(@Body requestModel: User):UserResponseForCreateUser
+
+    @POST("api/user/admin/update-user")
+    suspend fun updateUser(@Body requestUserModel: UserUpdate):UserUpdateResponse
 
     @GET("/api/user/star/admin/get-all-stars")
     suspend fun getAllStars() : StarResponse
